@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main>
-      <Image fill src="/rings.jpg" className="blur" alt="" />
+      <Image fill src="/rings.jpg" className="blur object-cover" alt="" />
       <div className="hero min-h-screen">
         <div className="hero-content flex-col lg:flex-row bg-base-100/75 shadow-xl p-16 rounded-xl">
           <div>
