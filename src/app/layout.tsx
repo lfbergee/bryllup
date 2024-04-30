@@ -21,7 +21,7 @@ export default function RootLayout({
       <body
         className={clsx(
           font.className,
-          "bg-primary text-secondary flex justify-center",
+          "bg-primary text-secondary flex justify-center max-md:p-4",
         )}
       >
         <div className="border border-secondary m-8 p-8 min-h-[80vh] w-full max-w-4xl rounded-xl">
@@ -29,7 +29,7 @@ export default function RootLayout({
             <h1 className="text-5xl text-center">Monica & Leiv Fredrik</h1>
             <time className="text-3xl text-center">7. september 2024</time>
             <nav className="flex justify-center my-3">
-              <ul className="list-none flex gap-8 text-2xl text-accent">
+              <ul className="list-none flex gap-8 text-2xl text-accent flex-wrap justify-center">
                 <li>
                   <Link href="#rsvp">RSVP</Link>
                 </li>
