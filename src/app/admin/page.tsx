@@ -1,10 +1,12 @@
 import { Login } from "@/lib/admin/login";
+import { cookies } from "next/headers";
 
 export default function Page() {
+  const authCookie = cookies().get("admin")?.value === "true";
   return (
     <div>
       <h1 className="text-center text-2xl pb-4">Admin Page</h1>
-      <Login />
+      <Login prelogin={authCookie} />
     </div>
   );
 }

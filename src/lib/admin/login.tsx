@@ -6,9 +6,9 @@ import { Button } from "@/lib/button";
 import { Panel } from "./panel";
 import { login } from "./server";
 
-export function Login() {
+export function Login({ prelogin = false }) {
   const [password, setPassword] = useState("");
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(prelogin);
   const [_, startTransition] = useTransition();
 
   const handleLogin = () => {
