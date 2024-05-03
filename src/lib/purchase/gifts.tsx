@@ -11,7 +11,10 @@ export async function Gifts() {
   return (
     <section id="rsvp" className="flex flex-col gap-2">
       <h2 className="text-3xl text-center mb-4">Ønskeliste</h2>
-      {wishes.map((wish) => (
+      {wishes.wishes.map((wish) => (
+        <Wish key={wish.id} {...wish} />
+      ))}
+      {wishes.granted.map((wish) => (
         <Wish key={wish.id} {...wish} />
       ))}
     </section>

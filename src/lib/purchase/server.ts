@@ -17,13 +17,20 @@ export async function updatePurchase(id: number) {
   }
 }
 
-export async function getWishes(): Promise<WishType[] | "error"> {
+export async function getWishes(): Promise<
+  { wishes: WishType[]; granted: WishType[] } | "error"
+> {
   try {
     const result = (await sql`SELECT * FROM wishes;`) as WishRow;
 
-    console.log("result", result);
+    const wishes =
+      result?.rows?.filter((wish) => wish.purchased_amount !== wish.amount) ??
+      [];
+    const granted =
+      result?.rows?.filter((wish) => wish.purchased_amount === wish.amount) ??
+      [];
 
-    return result?.rows ?? [];
+    return { wishes, granted };
   } catch (error) {
     return "error";
   }
