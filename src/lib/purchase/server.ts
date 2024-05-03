@@ -21,6 +21,8 @@ export async function getWishes(): Promise<WishType[] | "error"> {
   try {
     const result = (await sql`SELECT * FROM wishes;`) as WishRow;
 
+    console.log("result", result);
+
     return (
       result?.rows?.toSorted((a) =>
         a.purchased_amount === a.amount ? 1 : -1,

@@ -36,6 +36,7 @@ export async function createWishTable() {
     return;
   }
   try {
+    sql`DROP TABLE wishes;`;
     sql`CREATE TABLE wishes (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     title TEXT NOT NULL,
