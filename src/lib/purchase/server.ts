@@ -23,11 +23,7 @@ export async function getWishes(): Promise<WishType[] | "error"> {
 
     console.log("result", result);
 
-    return (
-      result?.rows?.toSorted((a) =>
-        a.purchased_amount === a.amount ? 1 : -1,
-      ) ?? []
-    );
+    return result?.rows ?? [];
   } catch (error) {
     return "error";
   }
