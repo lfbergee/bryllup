@@ -22,7 +22,11 @@ export function Wish({
         },
       )}
     >
-      <Image height={300} width={200} src={image} alt={title} />
+      {image.startsWith("http") ? (
+        <Image height={300} width={200} src={image} alt={title} />
+      ) : (
+        <span />
+      )}
       <div className="flex flex-col justify-evenly gap-2 w-full">
         <h3>{title}</h3>
         <p>{description}</p>
@@ -32,13 +36,19 @@ export function Wish({
         {amount > 1 && (
           <>
             <span>Antall ønsket {amount}</span>
-            <span>Antall kjøpt {purchased_amount}</span>
+            <span>Antall gjenstående {amount - purchased_amount}</span>
           </>
         )}
         {purchased_amount === amount ? (
           <span>Kjøpt</span>
         ) : (
-          <PurchaseButton id={id} />
+          <PurchaseButton
+            id={id}
+            isMulti={amount > 1}
+            hasPurcashe={purchased_amount > 0}
+            max={amount - purchased_amount}
+            purchased={purchased_amount}
+          />
         )}
       </div>
     </div>

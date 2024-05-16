@@ -6,10 +6,18 @@ import { WishType } from "./types";
 
 type WishRow = { rows: WishType[] };
 
-export async function updatePurchase(id: number) {
+export async function updatePurchase(
+  id: number,
+  direction: "buy" | "remove",
+  amount: number,
+) {
   try {
-    await sql`UPDATE wishes SET purchased_amount = purchased_amount + 1 WHERE id = ${id};`;
-
+    if (direction === "buy") {
+      await sql`UPDATE wishes SET purchased_amount = purchased_amount + ${amount} WHERE id = ${id};`;
+    }
+    if (direction === "remove") {
+      await sql`UPDATE wishes SET purchased_amount = purchased_amount - ${amount} WHERE id = ${id};`;
+    }
     revalidatePath("/");
     return "success";
   } catch (error) {
@@ -21,7 +29,7 @@ export async function getWishes(): Promise<
   { wishes: WishType[]; granted: WishType[] } | "error"
 > {
   try {
-    const result = (await sql`SELECT * FROM wishes;`) as WishRow;
+    const result = (await sql`SELECT * FROM wishes ORDER BY id;`) as WishRow;
 
     const wishes =
       result?.rows?.filter((wish) => wish.purchased_amount !== wish.amount) ??
