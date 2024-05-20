@@ -1,7 +1,12 @@
 import { useState, useTransition } from "react";
 import { Button } from "@/lib/button";
 import { Input } from "@/lib/input";
-import { createWishTable, createUserTable, createWish } from "./server";
+import {
+  createWishTable,
+  createUserTable,
+  createWish,
+  fixWish,
+} from "./server";
 import { useFormState } from "react-dom";
 
 const initialState = "initial";
@@ -16,6 +21,9 @@ export function Panel() {
   const handleUserTable = () => {
     startTranstition(() => createUserTable());
   };
+  const handleFix = () => {
+    startTranstition(() => fixWish());
+  };
 
   return (
     <div className="max-w-md w-full m-auto bg-secondary text-primary rounded-xl p-8 flex flex-col gap-2">
@@ -25,6 +33,9 @@ export function Panel() {
       </Button>
       <Button type="button" onClick={handleUserTable}>
         Lag gjeste tabell
+      </Button>
+      <Button type="button" onClick={handleFix}>
+        Fix wish
       </Button>
 
       <h2 className="text-4xl text-center mb-3">Legg til ønske</h2>

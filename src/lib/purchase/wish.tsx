@@ -15,10 +15,11 @@ export function Wish({
   return (
     <div
       className={clsx(
-        "flex justify-between gap-4 rounded-xl text-primary p-4",
+        "flex flex-col sm:flex-row items-center sm:justify-between gap-4 rounded-xl text-primary p-4",
         {
           "bg-gray opacity-70": purchased_amount === amount,
           "bg-secondary": purchased_amount !== amount,
+          "bg-secondary opacity-100": amount < 1,
         },
       )}
     >
@@ -34,9 +35,13 @@ export function Wish({
         <span />
       )}
       <div className="flex flex-col justify-evenly gap-2 w-full">
-        <a href={url} target="_blank" rel="noreferrer" className="underline">
+        {url ? (
+          <a href={url} target="_blank" rel="noreferrer" className="underline">
+            <h3 className="text-lg">{title}</h3>
+          </a>
+        ) : (
           <h3 className="text-lg">{title}</h3>
-        </a>
+        )}
         <p>{description}</p>
 
         {amount > 1 && (
@@ -45,16 +50,20 @@ export function Wish({
             <span>Antall gjenstående {amount - purchased_amount}</span>
           </p>
         )}
-        {purchased_amount === amount ? (
-          <span>Kjøpt</span>
-        ) : (
-          <PurchaseButton
-            id={id}
-            isMulti={amount > 1}
-            hasPurcashe={purchased_amount > 0}
-            max={amount - purchased_amount}
-            purchased={purchased_amount}
-          />
+        {amount > 0 && (
+          <>
+            {purchased_amount === amount ? (
+              <span>Kjøpt</span>
+            ) : (
+              <PurchaseButton
+                id={id}
+                isMulti={amount > 1}
+                hasPurcashe={purchased_amount > 0}
+                max={amount - purchased_amount}
+                purchased={purchased_amount}
+              />
+            )}
+          </>
         )}
       </div>
     </div>

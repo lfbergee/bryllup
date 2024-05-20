@@ -31,6 +31,10 @@ export async function createUserTable() {
   } catch (error) {}
 }
 
+export async function fixWish() {
+  await sql`UPDATE wishes SET title = 'Kunst' WHERE id = '22360bf6-efeb-4632-a031-28a46a8bd783'`;
+}
+
 export async function createWishTable() {
   const isAdmin = cookies().get("admin")?.value;
   if (isAdmin !== "true") {
