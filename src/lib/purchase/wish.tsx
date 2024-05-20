@@ -22,22 +22,28 @@ export function Wish({
         },
       )}
     >
-      {image.startsWith("http") ? (
-        <Image height={300} width={200} src={image} alt={title} />
+      {image.startsWith("http") || image.startsWith("/") ? (
+        <Image
+          className="mix-blend-multiply"
+          height={300}
+          width={200}
+          src={image}
+          alt={title}
+        />
       ) : (
         <span />
       )}
       <div className="flex flex-col justify-evenly gap-2 w-full">
-        <h3>{title}</h3>
-        <p>{description}</p>
-        <a className="underline" href={url} target="_blank" rel="noreferrer">
-          Til butikk
+        <a href={url} target="_blank" rel="noreferrer" className="underline">
+          <h3 className="text-lg">{title}</h3>
         </a>
+        <p>{description}</p>
+
         {amount > 1 && (
-          <>
+          <p className="text-sm flex flex-col">
             <span>Antall ønsket {amount}</span>
             <span>Antall gjenstående {amount - purchased_amount}</span>
-          </>
+          </p>
         )}
         {purchased_amount === amount ? (
           <span>Kjøpt</span>

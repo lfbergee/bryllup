@@ -8,6 +8,7 @@ export function Program() {
         time="13:00"
         title="Avgang fra Skibladnerbrygga i Hamar sentrum"
         desc="Bryllupskake, kaffe & jordbær"
+        link="https://www.google.com/maps/place/Skibladnerbrygga/@60.792532,11.0674807,17z/data=!3m1!4b1!4m6!3m5!1s0x4641e13bc9706305:0xbed6d0f3cb377f03!8m2!3d60.792532!4d11.0674807!16s%2Fg%2F11bzq34k2h?entry=ttu"
       />
       <TimeSlot
         time="15:00"

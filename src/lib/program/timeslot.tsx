@@ -7,10 +7,12 @@ export function TimeSlot({
   time,
   title,
   desc,
+  link,
 }: {
   time: string;
   title: string;
   desc?: string;
+  link?: string;
 }) {
   return (
     <div
@@ -24,6 +26,16 @@ export function TimeSlot({
         <h3>{title}</h3>
       </span>
       {desc && <p className="text-xl text-secondary italic">{desc}</p>}
+      {link && (
+        <a
+          className="text-secondary underline"
+          href={link}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Kart
+        </a>
+      )}
     </div>
   );
 }

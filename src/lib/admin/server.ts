@@ -18,6 +18,7 @@ export async function createUserTable() {
     return;
   }
   try {
+    await sql`DROP TABLE users;`;
     await sql`CREATE TABLE guests (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name TEXT NOT NULL,
@@ -36,8 +37,8 @@ export async function createWishTable() {
     return;
   }
   try {
-    sql`DROP TABLE wishes;`;
-    sql`CREATE TABLE wishes (
+    await sql`DROP TABLE wishes;`;
+    await sql`CREATE TABLE wishes (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     title TEXT NOT NULL,
     description TEXT,
