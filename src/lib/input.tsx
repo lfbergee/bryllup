@@ -2,6 +2,7 @@ import { clsx } from "clsx";
 import { Crimson_Text } from "next/font/google";
 
 const font = Crimson_Text({ weight: "400", subsets: ["latin"] });
+
 export function Input({
   label,
   name,
@@ -20,6 +21,29 @@ export function Input({
         name={name}
         {...rest}
       />
+    </label>
+  );
+}
+
+export function Select({
+  label,
+  name,
+  ...rest
+}: React.SelectHTMLAttributes<HTMLSelectElement> & { label: string }) {
+  return (
+    <label className="flex flex-col gap-1">
+      {label}
+      <select
+        className={clsx(
+          "input border border-secondary rounded-lg p-2 bg-white",
+          font.className,
+        )}
+        name={name}
+        {...rest}
+      >
+        <option>Kommer</option>
+        <option>Kommer ikke</option>
+      </select>
     </label>
   );
 }

@@ -19,7 +19,7 @@ export function Wish({
         {
           "bg-gray opacity-70": purchased_amount === amount,
           "bg-secondary": purchased_amount !== amount,
-          "bg-secondary opacity-100": amount < 1,
+          "bg-secondary !opacity-100": amount < 1,
         },
       )}
     >

@@ -5,8 +5,8 @@ import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
 export async function login(password: string) {
-  cookies().set("admin", "true");
-  if (password === "secret") {
+  cookies().set("admin", process.env.ADMIN ?? "");
+  if (password === process.env.ADMIN) {
     return true;
   }
   return false;
@@ -14,15 +14,15 @@ export async function login(password: string) {
 
 export async function createUserTable() {
   const isAdmin = cookies().get("admin")?.value;
-  if (isAdmin !== "true") {
+  if (isAdmin !== process.env.ADMIN) {
     return;
   }
   try {
-    await sql`DROP TABLE users;`;
+    await sql`DROP TABLE guests;`;
     await sql`CREATE TABLE guests (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name TEXT NOT NULL,
-    antall NUMERIC NOT NULL,
+    rsvp TEXT NOT NULL,
     phone TEXT NOT NULL,
     allergi TEXT,
     annet TEXT,
@@ -37,7 +37,7 @@ export async function fixWish() {
 
 export async function createWishTable() {
   const isAdmin = cookies().get("admin")?.value;
-  if (isAdmin !== "true") {
+  if (isAdmin !== process.env.ADMIN) {
     return;
   }
   try {
@@ -60,7 +60,7 @@ export async function createWish(
   formData: FormData,
 ): Promise<string> {
   const isAdmin = cookies().get("admin")?.value;
-  if (isAdmin !== "true") {
+  if (isAdmin !== process.env.ADMIN) {
     return "unauthorized";
   }
   const title = (formData.get("title") as string) ?? "";

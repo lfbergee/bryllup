@@ -36,14 +36,18 @@ export default function Home() {
           gleder oss til å feire dagen sammen med dere!
         </p>
 
+        <p className="text-center">Kleskode: Pent</p>
+
         <p className="text-center">
           Vi tjuvstarter helgen med vielse på fredag med forlovere og nærmeste
           familie
         </p>
-        <p className="text-center">
+        <p className="text-center text-xl">
           Toastmaster: Øyvind Wedø
           <br />
           Ta kontakt for taletid
+          <br />
+          oyivind.wedoe@gmail.com - 414 69 941
         </p>
         <Gifts />
       </main>

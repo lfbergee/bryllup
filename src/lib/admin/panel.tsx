@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useTransition } from "react";
 import { Button } from "@/lib/button";
 import { Input } from "@/lib/input";

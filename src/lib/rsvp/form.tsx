@@ -1,6 +1,6 @@
 "use client";
 
-import { Input } from "@/lib/input";
+import { Input, Select } from "@/lib/input";
 import { Button } from "@/lib/button";
 import { submit } from "./server";
 import { useFormState } from "react-dom";
@@ -26,9 +26,9 @@ export function Rsvp() {
     >
       <h2 className="text-4xl text-center mb-3">RSVP</h2>
       <form className="flex flex-col gap-2" action={formAction}>
-        <Input name="navn" type="text" label="Navn" />
+        <Input name="navn" type="text" label="Navn på alle som kommer" />
         <Input name="telefon" type="tel" label="Telefon" />
-        <Input name="antall" type="number" label="RSVP (antall)" />
+        <Select name="rsvp" label="RSVP (antall)" />
         <Input name="allergi" type="text" label="Allergi" />
         <Input name="annet" type="text" label="Annet" />
         <Button type="submit">Send inn</Button>
