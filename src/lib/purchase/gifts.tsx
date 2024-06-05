@@ -11,6 +11,7 @@ export async function Gifts() {
   return (
     <section id="rsvp" className="flex flex-col gap-2">
       <h2 className="text-3xl text-center mb-4">Ønskeliste</h2>
+      <p className="text-center mb-4">Vi legger til flere ønsker fortløpende</p>
       {wishes.wishes.map((wish) => (
         <Wish key={wish.id} {...wish} />
       ))}

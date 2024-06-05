@@ -21,7 +21,7 @@ export function TimeSlot({
         font.className,
       )}
     >
-      <span className="flex text-2xl gap-2 justify-center w-full">
+      <span className="flex sm:flex-row flex-col text-2xl gap-2 justify-center w-full">
         <time>{time}</time>
         <h3>{title}</h3>
       </span>
