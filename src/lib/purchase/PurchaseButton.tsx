@@ -72,12 +72,14 @@ export function PurchaseButton({
         </div>
       </dialog>
       <div className="flex gap-2">
-        <Button
-          type="button"
-          onClick={isMulti ? () => setShowDialog("buy") : handleClick("buy")}
-        >
-          Marker som kjøpt
-        </Button>
+        {max > purchased && (
+          <Button
+            type="button"
+            onClick={isMulti ? () => setShowDialog("buy") : handleClick("buy")}
+          >
+            Marker som kjøpt
+          </Button>
+        )}
         {hasPurcashe && (
           <Button
             type="button"

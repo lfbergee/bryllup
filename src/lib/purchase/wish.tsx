@@ -51,19 +51,13 @@ export function Wish({
           </p>
         )}
         {amount > 0 && (
-          <>
-            {purchased_amount === amount ? (
-              <span>Kjøpt</span>
-            ) : (
-              <PurchaseButton
-                id={id}
-                isMulti={amount > 1}
-                hasPurcashe={purchased_amount > 0}
-                max={amount - purchased_amount}
-                purchased={purchased_amount}
-              />
-            )}
-          </>
+          <PurchaseButton
+            id={id}
+            isMulti={amount > 1}
+            hasPurcashe={purchased_amount > 0}
+            max={amount - purchased_amount}
+            purchased={purchased_amount}
+          />
         )}
       </div>
     </div>

@@ -26,7 +26,7 @@ export default function Home() {
               <Link href="#program">Program</Link>
             </li>
             <li>
-              <Link href="#gift">Ønskeliste</Link>
+              <Link href="#gifts">Ønskeliste</Link>
             </li>
           </ul>
         </nav>

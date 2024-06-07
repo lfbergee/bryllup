@@ -13,10 +13,22 @@ export async function updatePurchase(
 ) {
   try {
     if (direction === "buy") {
-      await sql`UPDATE wishes SET purchased_amount = purchased_amount + ${amount} WHERE id = ${id};`;
+      const wish = (await sql`SELECT * FROM wishes WHERE id = ${id};`) as any;
+
+      const nextAmount =
+        parseFloat(wish.rows[0].purchased_amount) + amount > wish.rows[0].amount
+          ? wish.rows[0].amount
+          : parseFloat(wish.rows[0].purchased_amount) + amount;
+      await sql`UPDATE wishes SET purchased_amount = ${nextAmount} WHERE id = ${id};`;
     }
     if (direction === "remove") {
-      await sql`UPDATE wishes SET purchased_amount = purchased_amount - ${amount} WHERE id = ${id};`;
+      const wish = (await sql`SELECT * FROM wishes WHERE id = ${id};`) as any;
+
+      const nextAmount =
+        parseFloat(wish.rows[0].purchased_amount) - amount < 0
+          ? 0
+          : parseFloat(wish.rows[0].purchased_amount) - amount;
+      await sql`UPDATE wishes SET purchased_amount = ${nextAmount} WHERE id = ${id};`;
     }
     revalidatePath("/");
     return "success";

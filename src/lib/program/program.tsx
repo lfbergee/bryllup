@@ -2,7 +2,7 @@ import { TimeSlot } from "./timeslot";
 
 export function Program() {
   return (
-    <section id="rsvp" className="flex flex-col gap-4">
+    <section id="program" className="flex flex-col gap-4">
       <h2 className="text-3xl text-center mb-4">Program</h2>
       <TimeSlot
         time="13:00"
