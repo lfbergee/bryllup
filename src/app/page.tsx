@@ -3,6 +3,9 @@ import { Program } from "@/lib/program/program";
 import { Gifts } from "@/lib/purchase/gifts";
 import Link from "next/link";
 import Image from "next/image";
+import { Crimson_Text } from "next/font/google";
+
+const font = Crimson_Text({ weight: "400", subsets: ["latin"] });
 
 export default function Home() {
   return (
@@ -51,11 +54,13 @@ export default function Home() {
           familie
         </p>
         <p className="text-center text-xl">
-          Toastmaster: Øyvind Wedø
+          Toastmaster: Øyvind Wedøe
           <br />
           Ta kontakt for taletid
           <br />
-          oyivind.wedoe@gmail.com - 414 69 941
+          <span className={font.className}>
+            oyvind.wedoe@gmail.com - 414 69 941
+          </span>
         </p>
         <Gifts />
       </main>
