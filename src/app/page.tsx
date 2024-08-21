@@ -23,9 +23,6 @@ export default function Home() {
         <nav className="flex justify-center my-3">
           <ul className="list-none flex gap-8 text-2xl text-accent flex-wrap justify-center">
             <li>
-              <Link href="#rsvp">RSVP</Link>
-            </li>
-            <li>
               <Link href="#program">Program</Link>
             </li>
             <li>
@@ -39,7 +36,6 @@ export default function Home() {
           Vi inviterer til bryllupsfest på Atlungstad Brenneri!
         </p>
         <Program />
-        <Rsvp />
         <p className="text-center">
           Vi starter dagen med en båttur med Skibladner fra Hamar sentrum til
           Atlungstad. Atlungstad er ca 10 minutter kjøring fra Hamar sentrum, så
